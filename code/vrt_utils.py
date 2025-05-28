@@ -1,4 +1,4 @@
-#utils
+#vrt_utils
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -53,7 +53,7 @@ def fill_between_curves(ax, x, y1, y2, color, label=None, alpha=0.1, text_offset
 def plottingfunc(ax, lvrt_x,lvrt_y,hvrt_x, hvrt_y):
     for x, y in [(lvrt_x, lvrt_y), (hvrt_x, hvrt_y)]:
         ax.plot(x, y, color='black', linewidth=2.5, zorder=5)
-        return ax
+    return ax
 
 
 def draw_guidelines(ax, xs, ys):

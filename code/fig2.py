@@ -1,3 +1,5 @@
+#fig2.py
+
 import matplotlib.pyplot as plt
 
 # Create figure (wider than tall for 2:1 aspect)
@@ -88,4 +90,4 @@ ax.text(-0.5, -0.45, 'k2', fontsize=8)
 fig.patch.set_linewidth(2)
 fig.patch.set_edgecolor('black')
 
-plt.savefig("fig2.png", dpi=800, bbox_inches='tight')
+plt.savefig("../plots/fig2.png", dpi=800, bbox_inches='tight')

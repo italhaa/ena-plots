@@ -1,3 +1,5 @@
+#fig3.py
+
 import matplotlib.pyplot as plt
 
 # === Create the figure and axis ===
@@ -39,4 +41,4 @@ fig.patch.set_edgecolor('black')
 
 # === Save the figure ===
 plt.tight_layout()
-plt.savefig("fig3.png", dpi=800, bbox_inches='tight')
+plt.savefig("../plots/fig3.png", dpi=800, bbox_inches='tight')
