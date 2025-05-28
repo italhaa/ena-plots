@@ -1,3 +1,0 @@
-# ena-plots
-
-Test

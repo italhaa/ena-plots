@@ -1,8 +1,8 @@
-# Ignore Python virtual environments
+# Ignore virtual environment folders named 'venv' anywhere in the project
 venv/
 **/venv/
 
-# Ignore Python bytecode cache
+# Ignore __pycache__ directories everywhere
 __pycache__/
 **/__pycache__/
 
@@ -11,7 +11,8 @@ __pycache__/
 *.pyo
 *.pyd
 
-# Optional: VSCode and macOS/system junk
+# Editor and system-specific files
 .vscode/
 .DS_Store
 Thumbs.db
+.gitignore
