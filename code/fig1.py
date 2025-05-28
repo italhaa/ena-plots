@@ -2,9 +2,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 from vrt_utils import *
 
+lower_range = 0.85
+
 lvrt_points = np.array([
     [min_plot_time, 1.0], [0, 1.0], [0, 0], [0.15, 0],
-    [2, 0.85], [20, 0.85], [20, 0.9], [max_plot_time, 0.9]
+    [2, lower_range-0.05], [20, lower_range-0.05], [20, lower_range], [max_plot_time, lower_range]
 ])
 hvrt_points = np.array([
     [min_plot_time, 1.0], [0, 1.0], [0, 1.2], [2, 1.2],
@@ -14,7 +16,7 @@ hvrt_points = np.array([
 fig, ax = setup_plot(lvrt_points, hvrt_points)
 lvrt_x, lvrt_y, hvrt_x, hvrt_y = use_transformed_curve(lvrt_points, hvrt_points)
 
-addAreaA(ax, 0.9, 1.1)
+addAreaA(ax, lower_range, 1.1)
 plottingfunc(ax, lvrt_x, lvrt_y, hvrt_x, hvrt_y)
 guidelinesfunc(ax, lvrt_x, lvrt_y, hvrt_x, hvrt_y)
 
@@ -25,15 +27,15 @@ if np.any(mask_d):
                         hvrt_y[mask_d], color='red', label='Area D')
 
 hvrt_y_interp = np.interp(lvrt_x, hvrt_x, hvrt_y)
-mask_b = lvrt_y < 0.9
+mask_b = lvrt_y < lower_range
 if np.any(mask_b):
     fill_between_curves(ax, lvrt_x[mask_b], lvrt_y[mask_b],
-                        np.minimum(hvrt_y_interp[mask_b], 0.9),
+                        np.minimum(hvrt_y_interp[mask_b], lower_range),
                         color='blue', label='Area B', text_offset=(-1.1, 0.05))
 
 ax.text(3, 0.5, "Area C", color='black', fontsize=12, fontweight='bold',
         ha='center', va='center', zorder=2)
-addSideArrowLabel(ax, 0.9, 1.1)
+addSideArrowLabel(ax, lower_range, 1.1)
 
 ax.set_xlabel('Time [sec]', fontsize=12)
 ax.set_ylabel('Voltage (U) at Generator Terminal [p.u.]', fontsize=12)
@@ -50,7 +52,8 @@ ax.set_yticks(y_tick_values)
 ax.set_yticklabels([f"{v:.2g}" for v in y_tick_values])
 
 clean(ax)
-fig.patch.set_linewidth(2)
-fig.patch.set_edgecolor('black')
+
+
 plt.tight_layout()
-plt.savefig("../plots/fig1.png", dpi=800, bbox_inches='tight')
+
+plt.savefig(f"../plots/fig1_0{int(lower_range * 100)}_110.png", dpi=800, bbox_inches='tight')

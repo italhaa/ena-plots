@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 fig, ax = plt.subplots(figsize=(8, 6))
 
 # Plot the given line
-x_points = [-0.8, -0.1, 0.1, 0.3]
+x_points = [-0.6, -0.1, 0.1, 0.3]
 y_points = [-1, 0, 0, 1]
 ax.plot(x_points, y_points, color='black')
 
@@ -87,7 +87,6 @@ ax.text(0.15, 0.55, 'k1', fontsize=8)
 ax.text(-0.5, -0.45, 'k2', fontsize=8)
 
 # Set a visible rectangle frame around the entire figure (including labels)
-fig.patch.set_linewidth(2)
-fig.patch.set_edgecolor('black')
+
 
 plt.savefig("../plots/fig2.png", dpi=800, bbox_inches='tight')

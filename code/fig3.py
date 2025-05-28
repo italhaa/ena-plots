@@ -1,12 +1,13 @@
 #fig3.py
 
 import matplotlib.pyplot as plt
+drop = 51
 
 # === Create the figure and axis ===
 fig, ax = plt.subplots(figsize=(8, 5))
 
 # === Data points ===
-x_points = [49, 50.5, 52, 52, 52.5]
+x_points = [49, drop, 52, 52, 52.5]
 y_points = [100, 100, 25, 0, 0]
 ax.plot(x_points, y_points, color='black', linewidth=2)
 
@@ -16,7 +17,7 @@ ax.set_ylim(0, 120)
 
 # === Labels and title ===
 ax.set_xlabel("System Frequency [Hz]", fontsize=12)
-ax.set_ylabel("% of Power Output when f > 50.5 Hz", fontsize=12)
+ax.set_ylabel(f"% of Power Output when f > {drop} Hz", fontsize=12)
 ax.set_title("Power Curtailment during Over-Frequency", fontsize=14, fontweight='bold')
 
 # === Grid: Horizontal lines only ===
@@ -35,10 +36,8 @@ for spine in ['top', 'right']:
 for spine in ['left', 'bottom']:
     ax.spines[spine].set_linewidth(1.0)
 
-# === Add rectangular frame around the figure (not just plot) ===
-fig.patch.set_linewidth(2)
-fig.patch.set_edgecolor('black')
+
 
 # === Save the figure ===
 plt.tight_layout()
-plt.savefig("../plots/fig3.png", dpi=800, bbox_inches='tight')
+plt.savefig(f"../plots/fig3_{int(drop*10)}.png", dpi=800, bbox_inches='tight')
